@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyLekka — Know Your Spend.</title>
 <meta name="description" content="MyLekka is a personal spending intelligence app built around one question: does my spending reflect what truly matters to me? Made for India.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%236e1f1f'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23f4ead0' font-family='Georgia,serif'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230a3d20'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23ff9933' font-family='Georgia,serif'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ledger-red: #6e1f1f;
-    --ledger-red-deep: #431110;
+    --india-green: #146c36;
+    --india-green-deep: #0a3d20;
+    --saffron: #ff9933;
+    --saffron-ink: #b75b12;
     --paper: #efe6cf;
     --paper-line: #c9bfa0;
     --paper-shadow: #d9cca9;
@@ -22,6 +24,8 @@
     --brass-light: #d8b451;
     --cream: #f4ead0;
     --spine-w: 56px;
+    --rupee-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ctext x='6' y='36' font-family='Georgia,serif' font-size='26' fill='rgba(244,234,208,0.055)'%3E%E2%82%B9%3C/text%3E%3Ctext x='48' y='78' font-family='Georgia,serif' font-size='26' fill='rgba(244,234,208,0.055)'%3E%E2%82%B9%3C/text%3E%3C/svg%3E");
+    --rupee-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ctext x='6' y='36' font-family='Georgia,serif' font-size='26' fill='rgba(183,91,18,0.10)'%3E%E2%82%B9%3C/text%3E%3Ctext x='48' y='78' font-family='Georgia,serif' font-size='26' fill='rgba(183,91,18,0.10)'%3E%E2%82%B9%3C/text%3E%3C/svg%3E");
   }
   @media (max-width: 640px){ :root{ --spine-w: 30px; } }
 
@@ -29,6 +33,7 @@
   html{ scroll-behavior: smooth; }
   body{
     margin:0;
+    padding-top: 7px;
     background: var(--paper);
     color: var(--ink);
     font-family: 'IBM Plex Sans', sans-serif;
@@ -39,12 +44,24 @@
 
   a{ color: inherit; }
 
+  /* ---------- tricolor masthead ---------- */
+  .tricolor-bar{
+    position: fixed;
+    top:0; left:0; right:0;
+    height:7px;
+    z-index: 60;
+    background: linear-gradient(90deg,
+      var(--saffron) 0%, var(--saffron) 33.33%,
+      var(--cream) 33.33%, var(--cream) 66.66%,
+      var(--india-green) 66.66%, var(--india-green) 100%);
+  }
+
   /* ---------- spine ---------- */
   .spine{
     position: fixed;
-    top:0; left:0; bottom:0;
+    top:7px; left:0; bottom:0;
     width: var(--spine-w);
-    background: linear-gradient(180deg, var(--ledger-red) 0%, var(--ledger-red-deep) 100%);
+    background: linear-gradient(180deg, var(--india-green) 0%, var(--india-green-deep) 100%);
     z-index: 40;
     box-shadow: 4px 0 18px rgba(20,8,6,0.35);
   }
@@ -76,20 +93,16 @@
 
   /* ---------- hero / cover ---------- */
   .cover{
-    min-height: 100svh;
+    min-height: calc(100svh - 7px);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center;
     background:
       radial-gradient(120% 90% at 15% 0%, rgba(255,255,255,0.05), transparent 55%),
-      linear-gradient(160deg, var(--ledger-red) 0%, var(--ledger-red-deep) 85%);
+      var(--rupee-dark),
+      linear-gradient(160deg, var(--india-green) 0%, var(--india-green-deep) 85%);
+    background-repeat: no-repeat, repeat, no-repeat;
     color: var(--cream);
     overflow:hidden;
-  }
-  .cover::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 6px);
-    pointer-events:none;
   }
   .corner{
     position:absolute; width:64px; height:64px; opacity:.75;
@@ -116,7 +129,7 @@
     letter-spacing: 0.28em;
     font-size: clamp(0.85rem, 2vw, 1.05rem);
     margin: 0.9rem 0 0;
-    color: var(--brass-light);
+    color: var(--saffron);
   }
   .subline{
     max-width: 30ch;
@@ -171,17 +184,21 @@
   /* ---------- paper sections ---------- */
   .page{
     background:
-      linear-gradient(90deg, transparent 0 92px, rgba(178,46,46,0.35) 92px, rgba(178,46,46,0.35) 93px, transparent 93px),
+      linear-gradient(90deg, transparent 0 92px, rgba(255,153,51,0.45) 92px, rgba(255,153,51,0.45) 93px, transparent 93px),
       repeating-linear-gradient(180deg, transparent 0 43px, var(--paper-line) 43px, var(--paper-line) 44px, transparent 44px),
+      var(--rupee-light),
       var(--paper);
+    background-repeat: no-repeat, repeat, repeat, no-repeat;
     padding-top: 6.5rem; padding-bottom: 6.5rem;
   }
   @media (max-width: 640px){
     .page{
       background:
-        linear-gradient(90deg, transparent 0 34px, rgba(178,46,46,0.35) 34px, rgba(178,46,46,0.35) 35px, transparent 35px),
+        linear-gradient(90deg, transparent 0 34px, rgba(255,153,51,0.45) 34px, rgba(255,153,51,0.45) 35px, transparent 35px),
         repeating-linear-gradient(180deg, transparent 0 34px, var(--paper-line) 34px, var(--paper-line) 35px, transparent 35px),
+        var(--rupee-light),
         var(--paper);
+      background-repeat: no-repeat, repeat, repeat, no-repeat;
     }
   }
   .page-inner{ margin-left: 128px; max-width: 780px; }
@@ -192,7 +209,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--ledger-red);
+    color: var(--saffron-ink);
     margin: 0 0 1rem;
   }
 
@@ -238,7 +255,7 @@
     font-style: italic;
     font-weight: 600;
     font-size: 1.4rem;
-    color: var(--ledger-red);
+    color: var(--india-green);
   }
   .ledger-row .desc{
     font-size: 1rem;
@@ -250,13 +267,15 @@
   /* philosophy pull quote section */
   .philosophy{
     background:
-      linear-gradient(90deg, transparent 0 92px, rgba(178,46,46,0.35) 92px, rgba(178,46,46,0.35) 93px, transparent 93px),
-      linear-gradient(160deg, var(--ledger-red-deep), var(--ledger-red));
+      linear-gradient(90deg, transparent 0 92px, rgba(255,153,51,0.3) 92px, rgba(255,153,51,0.3) 93px, transparent 93px),
+      var(--rupee-dark),
+      linear-gradient(160deg, var(--india-green-deep), var(--india-green));
+    background-repeat: no-repeat, repeat, no-repeat;
     color: var(--cream);
     padding-top: 6.5rem; padding-bottom: 6.5rem;
   }
   @media (max-width: 640px){
-    .philosophy{ background: linear-gradient(90deg, transparent 0 34px, rgba(178,46,46,0.35) 34px, rgba(178,46,46,0.35) 35px, transparent 35px), linear-gradient(160deg, var(--ledger-red-deep), var(--ledger-red)); }
+    .philosophy{ background: linear-gradient(90deg, transparent 0 34px, rgba(255,153,51,0.3) 34px, rgba(255,153,51,0.3) 35px, transparent 35px), var(--rupee-dark), linear-gradient(160deg, var(--india-green-deep), var(--india-green)); background-repeat: no-repeat, repeat, no-repeat; }
   }
   .philosophy .page-inner{ max-width: 720px; }
   .rule{
@@ -281,9 +300,9 @@
     font-size: 0.82rem;
     letter-spacing: 0.04em;
     padding: 0.55rem 1.15rem;
-    border: 1.5px solid var(--ledger-red);
+    border: 1.5px solid var(--saffron);
     border-radius: 999px;
-    color: var(--ledger-red);
+    color: var(--saffron);
     position: relative;
   }
 
@@ -301,12 +320,13 @@
     font-style: italic;
     font-weight: 600;
     font-size: 1.15rem;
-    color: var(--ledger-red);
+    color: var(--india-green);
   }
 
   /* CTA */
   .cta{
-    background: var(--paper);
+    background-color: var(--paper);
+    background-image: var(--rupee-light);
     padding-top: 6rem; padding-bottom: 7rem;
     text-align:left;
   }
@@ -332,21 +352,21 @@
     color: var(--ink);
     outline: none;
   }
-  .signup input[type=email]:focus{ border-color: var(--ledger-red); box-shadow: 0 0 0 3px rgba(110,31,31,0.15); }
+  .signup input[type=email]:focus{ border-color: var(--india-green); box-shadow: 0 0 0 3px rgba(20,108,54,0.15); }
   .signup button{
     font-family:'IBM Plex Mono', monospace;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-size: 0.85rem;
     padding: 0.95rem 1.5rem;
-    background: var(--ledger-red);
+    background: var(--india-green);
     color: var(--cream);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background .2s ease, transform .15s ease;
   }
-  .signup button:hover{ background: var(--ledger-red-deep); }
+  .signup button:hover{ background: var(--india-green-deep); }
   .signup button:active{ transform: scale(0.97); }
   .signup button:focus-visible, .signup input:focus-visible{ outline: 2px solid var(--ink-blue); outline-offset: 2px; }
 
@@ -355,19 +375,20 @@
     margin-top: 1.2rem;
     font-family:'IBM Plex Mono', monospace;
     font-size: 0.85rem;
-    color: var(--ledger-red);
+    color: var(--india-green);
     align-items:center; gap: 0.6rem;
   }
   .confirm.show{ display:flex; }
   .confirm .seal{
     width: 22px; height:22px; border-radius:50%;
-    border: 1.5px solid var(--ledger-red);
+    border: 1.5px solid var(--india-green);
     display:flex; align-items:center; justify-content:center;
     font-size: 0.7rem;
   }
 
   footer{
-    background: var(--ledger-red-deep);
+    background-color: var(--india-green-deep);
+    background-image: var(--rupee-dark);
     color: rgba(244,234,208,0.65);
     padding: 2.4rem 6vw 2.4rem;
     font-family:'IBM Plex Mono', monospace;
@@ -380,16 +401,17 @@
 </head>
 <body>
 
+<div class="tricolor-bar" aria-hidden="true"></div>
 <div class="spine" aria-hidden="true"></div>
 
 <main>
 
   <!-- COVER -->
   <section class="cover">
-    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 2 L2 30 M2 2 L30 2" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.7"/></svg></div>
-    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 2 L62 30 M62 2 L34 2" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.7"/></svg></div>
-    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 62 L2 34 M2 62 L30 62" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.7"/></svg></div>
-    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 62 L62 34 M62 62 L34 62" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.7"/></svg></div>
+    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 2 L2 30 M2 2 L30 2" stroke="#ff9933" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
+    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 2 L62 30 M62 2 L34 2" stroke="#ff9933" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
+    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 62 L2 34 M2 62 L30 62" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
+    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 62 L62 34 M62 62 L34 62" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
 
     <p class="tagline">Personal Spending Intelligence</p>
     <h1 class="wordmark">MyLekka</h1>
