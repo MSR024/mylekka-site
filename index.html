@@ -142,10 +142,10 @@
 
   .stamp{
     margin-top: 3rem;
-    width: 128px; height:128px;
+    width: 148px; height:148px;
     border-radius:50%;
     border: 2px solid #5fd38a;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
     position:relative;
     transform: rotate(-8deg) scale(1);
     animation: stampdown .7s cubic-bezier(.2,1.6,.4,1) 0.4s both;
@@ -156,13 +156,19 @@
     border: 1px dashed rgba(95,211,138,0.55);
     border-radius: 50%;
   }
+  .wheel{ width:56px; height:56px; }
+  .wheel circle{ fill:none; stroke:#8fe3ae; }
+  .wheel line{ stroke:#8fe3ae; stroke-width:1; opacity:.85; }
+  .wheel circle.rim{ stroke-width:1.6; }
+  .wheel circle.hub{ fill:#8fe3ae; stroke:none; }
   .stamp-text{
     font-family:'IBM Plex Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     line-height:1.5;
     color: #8fe3ae;
+    margin-top: 0.4rem;
   }
   @keyframes stampdown{
     0%{ opacity:0; transform: rotate(-8deg) scale(2.4); }
@@ -300,25 +306,33 @@
     font-size: 0.8rem;
     letter-spacing: 0.04em;
     padding: 0.5rem 1.05rem;
-    border: 1.5px solid #8fe3ae;
+    background: var(--cream);
+    border: none;
     border-radius: 999px;
-    color: #8fe3ae;
+    color: var(--saffron-deep);
+    font-weight: 600;
   }
 
-  /* small aside — India note, deliberately understated */
-  .aside{
-    margin-top: 1.8rem;
-    padding-left: 1.1rem;
-    border-left: 2px solid var(--brass);
-    max-width: 60ch;
-  }
-  .aside p{
-    margin:0; font-size: 0.92rem; line-height:1.7; color:#6b6053;
-  }
-  .aside em{
+  .rupee-mark{
+    display:block;
     font-family:'Fraunces', serif;
     font-style: italic;
-    color: var(--india-green-deep);
+    font-size: 2.1rem;
+    color: var(--brass);
+    opacity: 0.85;
+    text-align:center;
+    margin: 2.4rem 0 0.6rem;
+  }
+  .purpose-line{
+    padding-top: 1.5rem;
+    margin-top: 0;
+    border-top: 1px dashed var(--paper-shadow);
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--saffron-deep);
+    text-align:center;
   }
 
   /* ==================== PAGE 3 — CTA + FOOTER (green) ==================== */
@@ -366,17 +380,18 @@
     font-family:'IBM Plex Mono', monospace;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 0.95rem 1.5rem;
+    font-size: 0.9rem;
+    padding: 1.05rem 1.9rem;
     background: var(--saffron);
     color: #3a1e04;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background .2s ease, transform .15s ease;
-    font-weight:600;
+    transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+    font-weight:700;
+    box-shadow: 0 6px 18px rgba(255,153,51,0.35);
   }
-  .signup button:hover{ background: #ffab52; }
+  .signup button:hover{ background: #ffab52; box-shadow: 0 8px 22px rgba(255,153,51,0.5); transform: translateY(-1px); }
   .signup button:active{ transform: scale(0.97); }
   .signup button:focus-visible, .signup input:focus-visible{ outline: 2px solid var(--saffron); outline-offset: 2px; }
 
@@ -429,6 +444,30 @@
     <p class="subline">Most of us know how much we earn. Few truly understand where it goes.</p>
 
     <div class="stamp" aria-hidden="true">
+      <svg class="wheel" viewBox="0 0 64 64">
+        <circle class="rim" cx="32" cy="32" r="27"/>
+        <line x1="39.0" y1="32.0" x2="59.0" y2="32.0"/>
+        <line x1="38.7" y1="34.2" x2="57.7" y2="40.3"/>
+        <line x1="37.7" y1="36.1" x2="53.8" y2="47.9"/>
+        <line x1="36.1" y1="37.7" x2="47.9" y2="53.8"/>
+        <line x1="34.2" y1="38.7" x2="40.3" y2="57.7"/>
+        <line x1="32.0" y1="39.0" x2="32.0" y2="59.0"/>
+        <line x1="29.8" y1="38.7" x2="23.7" y2="57.7"/>
+        <line x1="27.9" y1="37.7" x2="16.1" y2="53.8"/>
+        <line x1="26.3" y1="36.1" x2="10.2" y2="47.9"/>
+        <line x1="25.3" y1="34.2" x2="6.3" y2="40.3"/>
+        <line x1="25.0" y1="32.0" x2="5.0" y2="32.0"/>
+        <line x1="25.3" y1="29.8" x2="6.3" y2="23.7"/>
+        <line x1="26.3" y1="27.9" x2="10.2" y2="16.1"/>
+        <line x1="27.9" y1="26.3" x2="16.1" y2="10.2"/>
+        <line x1="29.8" y1="25.3" x2="23.7" y2="6.3"/>
+        <line x1="32.0" y1="25.0" x2="32.0" y2="5.0"/>
+        <line x1="34.2" y1="25.3" x2="40.3" y2="6.3"/>
+        <line x1="36.1" y1="26.3" x2="47.9" y2="10.2"/>
+        <line x1="37.7" y1="27.9" x2="53.8" y2="16.1"/>
+        <line x1="38.7" y1="29.8" x2="57.7" y2="23.7"/>
+        <circle class="hub" cx="32" cy="32" r="6.5"/>
+      </svg>
       <div class="stamp-text">MADE FOR<br>INDIA</div>
     </div>
 
@@ -488,10 +527,14 @@
           </div>
           <p class="attribution">&mdash; the MyLekka philosophy</p>
         </div>
+      </div>
 
-        <div class="aside">
-          <p>As India grows, earns and consumes more, we want that prosperity to translate into better choices and better lives. <em>Made for India. Made to make a difference in India.</em></p>
-        </div>
+      <div class="block reveal">
+        <p class="eyebrow">The larger ledger</p>
+        <p class="lede">MyLekka isn&rsquo;t only about one person&rsquo;s ledger. When millions of Indians start asking the same question &mdash; does my spending reflect what matters to me &mdash; those small, individual choices add up to something larger.</p>
+        <p class="lede" style="margin-top:1.1rem;">As India grows, earns and consumes more, we want that prosperity to translate into better choices and better lives &mdash; not just bigger numbers.</p>
+        <span class="rupee-mark" aria-hidden="true">&#8377;</span>
+        <p class="purpose-line">Made for India. Made to make a difference in India.</p>
       </div>
 
     </div>
