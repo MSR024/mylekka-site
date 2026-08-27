@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyLekka — Know Your Spend.</title>
 <meta name="description" content="MyLekka is a personal spending intelligence app built around one question: does my spending reflect what truly matters to me? Made for India.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230a3d20'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23ff9933' font-family='Georgia,serif'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%23c96a1e'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23f4ead0' font-family='Georgia,serif'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
+    --saffron: #ff9933;
+    --saffron-mid: #e8792b;
+    --saffron-deep: #b75b12;
     --india-green: #146c36;
     --india-green-deep: #0a3d20;
-    --saffron: #ff9933;
-    --saffron-ink: #b75b12;
     --paper: #efe6cf;
     --paper-line: #c9bfa0;
     --paper-shadow: #d9cca9;
@@ -24,7 +25,7 @@
     --brass-light: #d8b451;
     --cream: #f4ead0;
     --spine-w: 56px;
-    --rupee-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ctext x='6' y='36' font-family='Georgia,serif' font-size='26' fill='rgba(244,234,208,0.055)'%3E%E2%82%B9%3C/text%3E%3Ctext x='48' y='78' font-family='Georgia,serif' font-size='26' fill='rgba(244,234,208,0.055)'%3E%E2%82%B9%3C/text%3E%3C/svg%3E");
+    --rupee-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ctext x='6' y='36' font-family='Georgia,serif' font-size='26' fill='rgba(244,234,208,0.07)'%3E%E2%82%B9%3C/text%3E%3Ctext x='48' y='78' font-family='Georgia,serif' font-size='26' fill='rgba(244,234,208,0.07)'%3E%E2%82%B9%3C/text%3E%3C/svg%3E");
     --rupee-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ctext x='6' y='36' font-family='Georgia,serif' font-size='26' fill='rgba(183,91,18,0.10)'%3E%E2%82%B9%3C/text%3E%3Ctext x='48' y='78' font-family='Georgia,serif' font-size='26' fill='rgba(183,91,18,0.10)'%3E%E2%82%B9%3C/text%3E%3C/svg%3E");
   }
   @media (max-width: 640px){ :root{ --spine-w: 30px; } }
@@ -40,7 +41,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  ::selection{ background: var(--brass); color: var(--paper); }
+  ::selection{ background: var(--saffron-deep); color: var(--cream); }
 
   a{ color: inherit; }
 
@@ -91,22 +92,20 @@
     html{ scroll-behavior:auto; }
   }
 
-  /* ---------- hero / cover ---------- */
+  /* ==================== PAGE 1 — COVER ==================== */
   .cover{
     min-height: calc(100svh - 7px);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center;
     background:
-      radial-gradient(120% 90% at 15% 0%, rgba(255,255,255,0.05), transparent 55%),
+      radial-gradient(120% 90% at 15% 0%, rgba(255,255,255,0.08), transparent 55%),
       var(--rupee-dark),
-      linear-gradient(160deg, var(--india-green) 0%, var(--india-green-deep) 85%);
+      linear-gradient(160deg, var(--saffron-mid) 0%, var(--saffron-deep) 85%);
     background-repeat: no-repeat, repeat, no-repeat;
     color: var(--cream);
     overflow:hidden;
   }
-  .corner{
-    position:absolute; width:64px; height:64px; opacity:.75;
-  }
+  .corner{ position:absolute; width:64px; height:64px; opacity:.8; }
   .corner svg{ width:100%; height:100%; }
   .corner.tl{ top:22px; left: calc(6vw); }
   .corner.tr{ top:22px; right:22px; }
@@ -122,6 +121,7 @@
     font-size: clamp(2.8rem, 9vw, 6.4rem);
     letter-spacing: -0.01em;
     margin: 0;
+    color: var(--cream);
   }
   .tagline{
     font-family:'IBM Plex Mono', monospace;
@@ -129,21 +129,22 @@
     letter-spacing: 0.28em;
     font-size: clamp(0.85rem, 2vw, 1.05rem);
     margin: 0.9rem 0 0;
-    color: var(--saffron);
+    color: var(--cream);
+    opacity: 0.92;
   }
   .subline{
     max-width: 30ch;
     margin: 1.6rem auto 0;
     font-size: 1rem;
     line-height:1.6;
-    color: rgba(244,234,208,0.75);
+    color: rgba(244,234,208,0.82);
   }
 
   .stamp{
     margin-top: 3rem;
     width: 128px; height:128px;
     border-radius:50%;
-    border: 2px solid var(--brass-light);
+    border: 2px solid #5fd38a;
     display:flex; align-items:center; justify-content:center;
     position:relative;
     transform: rotate(-8deg) scale(1);
@@ -152,7 +153,7 @@
   .stamp::before{
     content:"";
     position:absolute; inset:7px;
-    border: 1px dashed rgba(216,180,81,0.55);
+    border: 1px dashed rgba(95,211,138,0.55);
     border-radius: 50%;
   }
   .stamp-text{
@@ -161,7 +162,7 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     line-height:1.5;
-    color: var(--brass-light);
+    color: #8fe3ae;
   }
   @keyframes stampdown{
     0%{ opacity:0; transform: rotate(-8deg) scale(2.4); }
@@ -174,14 +175,14 @@
     position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
     font-family:'IBM Plex Mono', monospace;
     font-size:0.7rem; letter-spacing:.18em; text-transform:uppercase;
-    color: rgba(244,234,208,0.55);
+    color: rgba(244,234,208,0.65);
     display:flex; flex-direction:column; align-items:center; gap:6px;
   }
   .scroll-cue span.arrow{ animation: bob 1.8s ease-in-out infinite; }
   @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(6px);} }
   @media (prefers-reduced-motion: reduce){ .scroll-cue span.arrow{ animation:none; } }
 
-  /* ---------- paper sections ---------- */
+  /* ==================== PAGE 2 — THE LEDGER (paper) ==================== */
   .page{
     background:
       linear-gradient(90deg, transparent 0 92px, rgba(255,153,51,0.45) 92px, rgba(255,153,51,0.45) 93px, transparent 93px),
@@ -189,7 +190,7 @@
       var(--rupee-light),
       var(--paper);
     background-repeat: no-repeat, repeat, repeat, no-repeat;
-    padding-top: 6.5rem; padding-bottom: 6.5rem;
+    padding-top: 5.5rem; padding-bottom: 5.5rem;
   }
   @media (max-width: 640px){
     .page{
@@ -204,12 +205,14 @@
   .page-inner{ margin-left: 128px; max-width: 780px; }
   @media (max-width: 640px){ .page-inner{ margin-left: 52px; padding-right:6px; } }
 
+  .block + .block{ margin-top: 4rem; padding-top: 3.4rem; border-top: 1px solid var(--paper-shadow); }
+
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--saffron-ink);
+    color: var(--saffron-deep);
     margin: 0 0 1rem;
   }
 
@@ -217,13 +220,13 @@
     font-family:'Fraunces', serif;
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(1.7rem, 4.2vw, 2.7rem);
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
     line-height: 1.28;
     margin: 0 0 1.4rem;
     color: var(--ink);
   }
   .lede{
-    font-size: 1.08rem;
+    font-size: 1.05rem;
     line-height: 1.75;
     color: #4a4038;
     max-width: 62ch;
@@ -232,18 +235,18 @@
   h2.section-title{
     font-family:'Fraunces', serif;
     font-weight: 600;
-    font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
     margin: 0 0 1.1rem;
     color: var(--ink);
   }
 
   /* ledger rows: what / where / why / how */
-  .ledger-table{ margin-top: 2.4rem; border-top: 1px solid var(--paper-shadow); }
+  .ledger-table{ margin-top: 2.2rem; border-top: 1px solid var(--paper-shadow); }
   .ledger-row{
     display:grid;
     grid-template-columns: 118px 1fr;
     gap: 1.6rem;
-    padding: 1.35rem 0;
+    padding: 1.2rem 0;
     border-bottom: 1px solid var(--paper-shadow);
     align-items: baseline;
   }
@@ -254,146 +257,153 @@
     font-family:'Fraunces', serif;
     font-style: italic;
     font-weight: 600;
-    font-size: 1.4rem;
-    color: var(--india-green);
+    font-size: 1.35rem;
+    color: var(--india-green-deep);
   }
   .ledger-row .desc{
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.65;
     color: #4a4038;
   }
   .ledger-row .desc b{ color: var(--ink); font-weight:600; }
 
-  /* philosophy pull quote section */
-  .philosophy{
-    background:
-      linear-gradient(90deg, transparent 0 92px, rgba(255,153,51,0.3) 92px, rgba(255,153,51,0.3) 93px, transparent 93px),
-      var(--rupee-dark),
-      linear-gradient(160deg, var(--india-green-deep), var(--india-green));
-    background-repeat: no-repeat, repeat, no-repeat;
-    color: var(--cream);
-    padding-top: 6.5rem; padding-bottom: 6.5rem;
-  }
-  @media (max-width: 640px){
-    .philosophy{ background: linear-gradient(90deg, transparent 0 34px, rgba(255,153,51,0.3) 34px, rgba(255,153,51,0.3) 35px, transparent 35px), var(--rupee-dark), linear-gradient(160deg, var(--india-green-deep), var(--india-green)); background-repeat: no-repeat, repeat, no-repeat; }
-  }
-  .philosophy .page-inner{ max-width: 720px; }
-  .rule{
-    width: 64px; height: 2px; background: var(--brass-light);
-    margin: 0 0 1.8rem;
-  }
-  .philosophy .quote-big{ color: var(--cream); }
-  .philosophy .lede{ color: rgba(244,234,208,0.78); }
-  .attribution{
+  /* inset philosophy panel — boxed insert, like a ledger summary block */
+  .panel{
     margin-top: 2.2rem;
+    padding: 2.6rem clamp(1.4rem, 4vw, 3rem);
+    border-radius: 6px;
+    background:
+      var(--rupee-dark),
+      linear-gradient(155deg, var(--saffron-mid), var(--saffron-deep));
+    background-repeat: repeat, no-repeat;
+    color: var(--cream);
+  }
+  .panel .rule{
+    width: 56px; height: 2px; background: var(--cream);
+    opacity:.65;
+    margin: 0 0 1.6rem;
+  }
+  .panel .quote-big{ color: var(--cream); font-size: clamp(1.4rem, 3.4vw, 2rem); }
+  .panel .lede{ color: rgba(244,234,208,0.85); }
+  .panel .attribution{
+    margin-top: 1.8rem;
     font-family:'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--brass-light);
+    color: rgba(244,234,208,0.7);
   }
 
-  /* values chips */
-  .values-wrap{ margin-top: 2rem; display:flex; flex-wrap:wrap; gap: 0.85rem; }
+  .values-wrap{ margin-top: 1.8rem; display:flex; flex-wrap:wrap; gap: 0.7rem; }
   .chip{
     font-family:'IBM Plex Mono', monospace;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     letter-spacing: 0.04em;
-    padding: 0.55rem 1.15rem;
-    border: 1.5px solid var(--saffron);
+    padding: 0.5rem 1.05rem;
+    border: 1.5px solid #8fe3ae;
     border-radius: 999px;
-    color: var(--saffron);
-    position: relative;
+    color: #8fe3ae;
   }
 
-  /* india note - margin note style */
-  .india-note{
-    margin-top: 3.4rem;
-    padding-left: 1.2rem;
+  /* small aside — India note, deliberately understated */
+  .aside{
+    margin-top: 1.8rem;
+    padding-left: 1.1rem;
     border-left: 2px solid var(--brass);
-    max-width: 56ch;
+    max-width: 60ch;
   }
-  .india-note p{ margin:0; font-size: 1rem; line-height:1.75; color:#4a4038; }
-  .india-note .made-for{
-    margin-top: 0.9rem;
+  .aside p{
+    margin:0; font-size: 0.92rem; line-height:1.7; color:#6b6053;
+  }
+  .aside em{
     font-family:'Fraunces', serif;
     font-style: italic;
-    font-weight: 600;
-    font-size: 1.15rem;
-    color: var(--india-green);
+    color: var(--india-green-deep);
   }
 
-  /* CTA */
-  .cta{
-    background-color: var(--paper);
-    background-image: var(--rupee-light);
-    padding-top: 6rem; padding-bottom: 7rem;
-    text-align:left;
+  /* ==================== PAGE 3 — CTA + FOOTER (green) ==================== */
+  .closing{
+    background:
+      linear-gradient(90deg, transparent 0 92px, rgba(255,153,51,0.32) 92px, rgba(255,153,51,0.32) 93px, transparent 93px),
+      var(--rupee-dark),
+      linear-gradient(165deg, var(--india-green) 0%, var(--india-green-deep) 88%);
+    background-repeat: no-repeat, repeat, no-repeat;
+    color: var(--cream);
+    padding-top: 5.5rem; padding-bottom: 3rem;
   }
-  .cta .page-inner{ max-width: 620px; }
-  .cta h2{
+  @media (max-width: 640px){
+    .closing{
+      background:
+        linear-gradient(90deg, transparent 0 34px, rgba(255,153,51,0.32) 34px, rgba(255,153,51,0.32) 35px, transparent 35px),
+        var(--rupee-dark),
+        linear-gradient(165deg, var(--india-green) 0%, var(--india-green-deep) 88%);
+      background-repeat: no-repeat, repeat, no-repeat;
+    }
+  }
+  .closing .page-inner{ max-width: 620px; }
+  .closing h2{
     font-family:'Fraunces', serif; font-weight:600;
-    font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
     margin: 0 0 0.6rem;
+    color: var(--cream);
   }
-  .cta p.sub{ margin: 0 0 2rem; color:#4a4038; font-size:1.02rem; }
+  .closing p.sub{ margin: 0 0 2rem; color: rgba(244,234,208,0.8); font-size:1rem; }
 
-  form.signup{
-    display:flex; gap: 0.7rem; flex-wrap: wrap;
-  }
+  form.signup{ display:flex; gap: 0.7rem; flex-wrap: wrap; }
   .signup input[type=email]{
     flex: 1 1 260px;
     padding: 0.95rem 1.1rem;
     font-family:'IBM Plex Sans', sans-serif;
     font-size: 0.98rem;
     background: #fbf6e9;
-    border: 1.5px solid var(--paper-shadow);
+    border: 1.5px solid transparent;
     border-radius: 4px;
     color: var(--ink);
     outline: none;
   }
-  .signup input[type=email]:focus{ border-color: var(--india-green); box-shadow: 0 0 0 3px rgba(20,108,54,0.15); }
+  .signup input[type=email]:focus{ border-color: var(--saffron); box-shadow: 0 0 0 3px rgba(255,153,51,0.25); }
   .signup button{
     font-family:'IBM Plex Mono', monospace;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-size: 0.85rem;
     padding: 0.95rem 1.5rem;
-    background: var(--india-green);
-    color: var(--cream);
+    background: var(--saffron);
+    color: #3a1e04;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background .2s ease, transform .15s ease;
+    font-weight:600;
   }
-  .signup button:hover{ background: var(--india-green-deep); }
+  .signup button:hover{ background: #ffab52; }
   .signup button:active{ transform: scale(0.97); }
-  .signup button:focus-visible, .signup input:focus-visible{ outline: 2px solid var(--ink-blue); outline-offset: 2px; }
+  .signup button:focus-visible, .signup input:focus-visible{ outline: 2px solid var(--saffron); outline-offset: 2px; }
 
   .confirm{
     display:none;
     margin-top: 1.2rem;
     font-family:'IBM Plex Mono', monospace;
     font-size: 0.85rem;
-    color: var(--india-green);
+    color: var(--saffron);
     align-items:center; gap: 0.6rem;
   }
   .confirm.show{ display:flex; }
   .confirm .seal{
     width: 22px; height:22px; border-radius:50%;
-    border: 1.5px solid var(--india-green);
+    border: 1.5px solid var(--saffron);
     display:flex; align-items:center; justify-content:center;
     font-size: 0.7rem;
   }
 
   footer{
-    background-color: var(--india-green-deep);
-    background-image: var(--rupee-dark);
-    color: rgba(244,234,208,0.65);
-    padding: 2.4rem 6vw 2.4rem;
+    margin-top: 4rem;
+    padding: 1.6rem 6vw 2rem;
+    border-top: 1px solid rgba(244,234,208,0.18);
     font-family:'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     letter-spacing: 0.04em;
+    color: rgba(244,234,208,0.6);
     display:flex; flex-wrap:wrap; justify-content:space-between; gap:0.6rem;
   }
   footer .brand{ color: var(--cream); }
@@ -406,12 +416,12 @@
 
 <main>
 
-  <!-- COVER -->
+  <!-- PAGE 1: COVER -->
   <section class="cover">
-    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 2 L2 30 M2 2 L30 2" stroke="#ff9933" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
-    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 2 L62 30 M62 2 L34 2" stroke="#ff9933" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
-    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 62 L2 34 M2 62 L30 62" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
-    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 62 L62 34 M62 62 L34 62" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
+    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 2 L2 30 M2 2 L30 2" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.85"/></svg></div>
+    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 2 L62 30 M62 2 L34 2" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.85"/></svg></div>
+    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 62 L2 34 M2 62 L30 62" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.85"/></svg></div>
+    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 62 L62 34 M62 62 L34 62" stroke="#5fd38a" stroke-width="2" fill="none" opacity="0.85"/></svg></div>
 
     <p class="tagline">Personal Spending Intelligence</p>
     <h1 class="wordmark">MyLekka</h1>
@@ -428,78 +438,69 @@
     </div>
   </section>
 
-  <!-- THE QUESTION -->
+  <!-- PAGE 2: THE LEDGER -->
   <section class="page">
-    <div class="page-inner reveal">
-      <p class="eyebrow">The question</p>
-      <p class="quote-big">&ldquo;Does my spending reflect what truly matters to me?&rdquo;</p>
-      <p class="lede">Most of us know how much we earn, but few truly understand where our money goes, why we spend it, and whether it reflects what matters to us. MyLekka is built around this one question.</p>
-    </div>
-  </section>
+    <div class="page-inner">
 
-  <!-- BEYOND TRACKING -->
-  <section class="page" style="padding-top:0; padding-bottom:6.5rem;">
-    <div class="page-inner reveal">
-      <p class="eyebrow">Beyond tracking</p>
-      <h2 class="section-title">Four entries, one fuller picture</h2>
-      <p class="lede">MyLekka goes beyond tracking expenses. It helps you understand your spending, and learn from it over time &mdash; not just log it.</p>
-
-      <div class="ledger-table">
-        <div class="ledger-row">
-          <div class="term">What</div>
-          <div class="desc">What you actually spend on, laid out plainly.</div>
-        </div>
-        <div class="ledger-row">
-          <div class="term">Where</div>
-          <div class="desc">Where that money goes &mdash; the places, people and patterns behind it.</div>
-        </div>
-        <div class="ledger-row">
-          <div class="term">Why</div>
-          <div class="desc">Why you spend it &mdash; the reasons and moments that drive each entry.</div>
-        </div>
-        <div class="ledger-row">
-          <div class="term">How</div>
-          <div class="desc">How it shapes your life, and <b>whether it reflects what truly matters to you.</b></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section class="philosophy">
-    <div class="page-inner reveal">
-      <div class="rule" aria-hidden="true"></div>
-      <p class="quote-big">The goal isn&rsquo;t simply to spend less or save more. It&rsquo;s to align your spending with what matters &mdash; family, health, education, experiences and your future.</p>
-      <p class="lede">Because real wealth isn&rsquo;t just how much money we have. It&rsquo;s how well we use it for the people and life that matter to us.</p>
-
-      <div class="values-wrap" aria-label="What matters">
-        <span class="chip">Family</span>
-        <span class="chip">Health</span>
-        <span class="chip">Education</span>
-        <span class="chip">Experiences</span>
-        <span class="chip">Future</span>
+      <div class="block reveal">
+        <p class="eyebrow">The question</p>
+        <p class="quote-big">&ldquo;Does my spending reflect what truly matters to me?&rdquo;</p>
+        <p class="lede">Most of us know how much we earn, but few truly understand where our money goes, why we spend it, and whether it reflects what matters to us. MyLekka is built around this one question.</p>
       </div>
 
-      <p class="attribution">&mdash; the MyLekka philosophy</p>
-    </div>
-  </section>
+      <div class="block reveal">
+        <p class="eyebrow">Beyond tracking</p>
+        <h2 class="section-title">Four entries, one fuller picture</h2>
+        <p class="lede">MyLekka goes beyond tracking expenses. It helps you understand your spending, and learn from it over time &mdash; not just log it.</p>
 
-  <!-- INDIA -->
-  <section class="page" style="padding-bottom: 4.5rem;">
-    <div class="page-inner reveal">
-      <p class="eyebrow">Why now</p>
-      <h2 class="section-title">As India earns more, we want it to live better.</h2>
-      <div class="india-note">
-        <p>As India grows, earns and consumes more, we want that prosperity to translate into better choices and better lives.</p>
-        <p class="made-for">Made for India. Made to make a difference in India.</p>
+        <div class="ledger-table">
+          <div class="ledger-row">
+            <div class="term">What</div>
+            <div class="desc">What you actually spend on, laid out plainly.</div>
+          </div>
+          <div class="ledger-row">
+            <div class="term">Where</div>
+            <div class="desc">Where that money goes &mdash; the places, people and patterns behind it.</div>
+          </div>
+          <div class="ledger-row">
+            <div class="term">Why</div>
+            <div class="desc">Why you spend it &mdash; the reasons and moments that drive each entry.</div>
+          </div>
+          <div class="ledger-row">
+            <div class="term">How</div>
+            <div class="desc">How it shapes your life, and <b>whether it reflects what truly matters to you.</b></div>
+          </div>
+        </div>
       </div>
+
+      <div class="block reveal">
+        <p class="eyebrow">What matters</p>
+        <div class="panel">
+          <div class="rule" aria-hidden="true"></div>
+          <p class="quote-big">The goal isn&rsquo;t simply to spend less or save more. It&rsquo;s to align your spending with what matters &mdash; family, health, education, experiences and your future.</p>
+          <p class="lede">Because real wealth isn&rsquo;t just how much money we have. It&rsquo;s how well we use it for the people and life that matter to us.</p>
+          <div class="values-wrap" aria-label="What matters">
+            <span class="chip">Family</span>
+            <span class="chip">Health</span>
+            <span class="chip">Education</span>
+            <span class="chip">Experiences</span>
+            <span class="chip">Future</span>
+          </div>
+          <p class="attribution">&mdash; the MyLekka philosophy</p>
+        </div>
+
+        <div class="aside">
+          <p>As India grows, earns and consumes more, we want that prosperity to translate into better choices and better lives. <em>Made for India. Made to make a difference in India.</em></p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
+  <!-- PAGE 3: CLOSING + FOOTER -->
+  <section class="closing">
     <div class="page-inner reveal">
-      <p class="eyebrow">Coming soon</p>
+      <p class="eyebrow" style="color: var(--saffron);">Coming soon</p>
       <h2>The ledger is being written.</h2>
       <p class="sub">Leave your email and be the first to know when MyLekka opens.</p>
 
@@ -513,12 +514,12 @@
         <span>Entry recorded. We&rsquo;ll write to you when MyLekka opens.</span>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <span class="brand">MyLekka.in &mdash; Know Your Spend.</span>
-    <span>&copy; 2026 MyLekka. Made for India.</span>
-  </footer>
+    <footer>
+      <span class="brand">MyLekka.in &mdash; Know Your Spend.</span>
+      <span>&copy; 2026 MyLekka. Made in India.</span>
+    </footer>
+  </section>
 
 </main>
 
@@ -530,7 +531,7 @@
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.18 });
+    }, { threshold: 0.12 });
     els.forEach(function(el){ io.observe(el); });
   } else {
     els.forEach(function(el){ el.classList.add('is-in'); });
