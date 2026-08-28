@@ -3,126 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyLekka — Know Your Spend.</title>
-<meta name="description" content="MyLekka is a personal spending intelligence app for India. Understand what, where, why and how you spend — and align it with what truly matters to you.">
+<title>MyLekka.in — Know Your Spend.</title>
+<meta name="description" content="MyLekka.in — Know Your Spend. Made for India. Coming soon.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#6e1f1f">
 <link rel="canonical" href="https://mylekka.in/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mylekka.in/">
-<meta property="og:title" content="MyLekka — Know Your Spend.">
-<meta property="og:description" content="A personal spending intelligence app for India. Understand what, where, why and how you spend — and align it with what truly matters to you.">
-<meta property="og:image" content="https://mylekka.in/og-image.jpg">
+<meta property="og:title" content="MyLekka.in — Know Your Spend.">
+<meta property="og:description" content="Made for India. Coming soon.">
 <meta property="og:locale" content="en_IN">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MyLekka — Know Your Spend.">
-<meta name="twitter:description" content="A personal spending intelligence app for India. Understand what, where, why and how you spend.">
-<meta name="twitter:image" content="https://mylekka.in/og-image.jpg">
-
-<!-- Favicons (placeholders — replace with real files when available) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%236e1f1f'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23f4ead0' font-family='Georgia,serif'%3E%E2%82%B9%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --maroon: #6e1f1f;
     --maroon-deep: #431110;
     --saffron: #ff9933;
     --india-green: #146c36;
-    --paper: #efe6cf;
-    --paper-line: #c9bfa0;
-    --paper-shadow: #d9cca9;
-    --ink: #2a2320;
-    --gold-ink: #8a6a1f;
     --brass: #b8902e;
     --brass-light: #d8b451;
     --cream: #f4ead0;
-    --spine-w: 56px;
   }
-  @media (max-width: 640px){ :root{ --spine-w: 30px; } }
-
   *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
+  html, body{ height: 100%; }
   body{
     margin:0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-  ::selection{ background: var(--brass); color: var(--cream); }
-
-  a{ color: inherit; }
-  a:focus-visible, button:focus-visible, input:focus-visible{
-    outline: 2px solid var(--brass);
-    outline-offset: 2px;
-  }
-
-  /* ---------- spine ---------- */
-  .spine{
-    position: fixed;
-    top:0; left:0; bottom:0;
-    width: var(--spine-w);
-    background: linear-gradient(180deg, var(--maroon) 0%, var(--maroon-deep) 100%);
-    z-index: 40;
-    box-shadow: 4px 0 18px rgba(20,8,6,0.35);
-  }
-  .spine::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 10px);
-  }
-  .spine::after{
-    content:"";
-    position:absolute;
-    left:50%; top:0; bottom:0;
-    width:1px;
-    transform: translateX(-50%);
-    background-image: repeating-linear-gradient(180deg, var(--brass-light) 0 6px, transparent 6px 16px);
-    opacity:.55;
-  }
-
-  main{ margin-left: var(--spine-w); }
-
-  section{ position: relative; padding: 0 6vw; }
-
-  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.is-in{ opacity:1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
-    html{ scroll-behavior:auto; }
-  }
-
-  /* ==================== PAGE 1 — COVER ==================== */
-  .cover{
     min-height: 100svh;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center;
-    background:
-      radial-gradient(120% 90% at 15% 0%, rgba(255,255,255,0.06), transparent 55%),
-      linear-gradient(160deg, var(--maroon) 0%, var(--maroon-deep) 85%);
+    display:flex; flex-direction:column;
+    background: linear-gradient(160deg, var(--maroon) 0%, var(--maroon-deep) 85%);
     color: var(--cream);
-    overflow:hidden;
-    padding-top: 4rem; padding-bottom: 4rem;
+    font-family:'IBM Plex Mono', monospace;
+    -webkit-font-smoothing: antialiased;
   }
-  .corner{ position:absolute; width:56px; height:56px; opacity:.7; }
-  .corner svg{ width:100%; height:100%; }
-  .corner.tl{ top:22px; left: calc(6vw); }
-  .corner.tr{ top:22px; right:22px; }
-  .corner.bl{ bottom:22px; left: calc(6vw); }
-  .corner.br{ bottom:22px; right:22px; }
-  @media (max-width: 640px){ .corner{ width:36px; height:36px; } }
 
-  .hero-rupee{
+  .page{
+    position: relative;
+    flex: 1 1 auto;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding: 6vh 6vw;
+    overflow: hidden;
+  }
+
+  .corner{ position:absolute; width:48px; height:48px; opacity:.6; }
+  .corner svg{ width:100%; height:100%; }
+  .corner.tl{ top:22px; left:22px; }
+  .corner.tr{ top:22px; right:22px; }
+  .corner.bl{ bottom:22px; left:22px; }
+  .corner.br{ bottom:22px; right:22px; }
+  @media (max-width: 640px){ .corner{ width:32px; height:32px; } }
+
+  .bg-rupee{
     position:absolute;
     top:50%; left:50%;
     transform: translate(-50%, -48%);
@@ -137,555 +75,106 @@
     user-select: none;
     z-index: 0;
   }
-  .cover-content{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; }
+
+  .content{ position:relative; z-index:1; animation: fadeIn 1s ease both; }
+  @keyframes fadeIn{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){ .content{ animation:none; } }
 
   .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    margin: 0 0 1rem;
+    color: rgba(244,234,208,0.65);
+    margin: 0 0 1.2rem;
   }
-  .cover .eyebrow{ color: var(--cream); opacity: 0.75; }
-
   .wordmark{
     font-family:'Fraunces', serif;
     font-weight:600;
     font-style: italic;
     font-optical-sizing: auto;
-    font-size: clamp(2.6rem, 9vw, 6rem);
+    font-size: clamp(2.8rem, 9vw, 5.5rem);
     letter-spacing: -0.01em;
     margin: 0;
     color: var(--cream);
   }
   .tagline{
-    font-family:'IBM Plex Mono', monospace;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    letter-spacing: 0.26em;
-    font-size: clamp(0.82rem, 2vw, 1rem);
     margin: 1rem 0 0;
     color: var(--brass-light);
   }
-  .subline{
-    max-width: 30ch;
-    margin: 1.8rem auto 0;
-    font-size: 1.02rem;
-    line-height:1.65;
-    color: rgba(244,234,208,0.82);
+
+  .tricolor-line{
+    width: 52px; height: 3px;
+    border-radius: 2px;
+    margin: 1.8rem auto;
+    background: linear-gradient(90deg,
+      var(--saffron) 0%, var(--saffron) 33.33%,
+      var(--cream) 33.33%, var(--cream) 66.66%,
+      var(--india-green) 66.66%, var(--india-green) 100%);
+    opacity: 0.9;
   }
 
-  .scroll-cue{
-    margin-top: 3.2rem;
-    display:flex; flex-direction:column; align-items:center;
-  }
-  .scroll-cue .arrow{
-    font-size: 1.1rem;
-    color: rgba(244,234,208,0.55);
-    animation: bob 1.8s ease-in-out infinite;
-  }
-  @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(6px);} }
-  @media (prefers-reduced-motion: reduce){ .scroll-cue .arrow{ animation:none; } }
-
-  /* ---------- stamp badge: tricolor ring + original wheel motif (not the state emblem) ---------- */
-  .stamp{
-    margin-top: 2.8rem;
-    width: 138px; height:138px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    position:relative;
-    transform: rotate(-6deg) scale(1);
-    animation: stampdown .7s cubic-bezier(.2,1.6,.4,1) 0.4s both;
-  }
-  .stamp-ring{ position:absolute; inset:0; width:100%; height:100%; }
-  .stamp-ring circle.inner-dash{ fill:none; stroke: rgba(244,234,208,0.4); stroke-width:1; stroke-dasharray: 2 4; }
-  .wheel{ width:52px; height:52px; }
-  .wheel circle.rim{ fill:none; stroke:var(--brass-light); stroke-width:1.6; }
-  .wheel line{ stroke:var(--brass-light); stroke-width:1; opacity:.85; }
-  .wheel circle.hub{ fill:var(--brass-light); stroke:none; }
-  .stamp-text{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 0.58rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    line-height:1.5;
-    color: var(--brass-light);
-    margin-top: 0.5rem;
-  }
-  @keyframes stampdown{
-    0%{ opacity:0; transform: rotate(-6deg) scale(2.2); }
-    70%{ opacity:1; }
-    100%{ opacity:1; transform: rotate(-6deg) scale(1); }
-  }
-  @media (prefers-reduced-motion: reduce){ .stamp{ animation:none; } }
-
-  /* ==================== PAGE 2 — CONTENT (paper) ==================== */
-  .page{
-    background:
-      linear-gradient(90deg, transparent 0 92px, rgba(184,144,46,0.4) 92px, rgba(184,144,46,0.4) 93px, transparent 93px),
-      repeating-linear-gradient(180deg, transparent 0 43px, var(--paper-line) 43px, var(--paper-line) 44px, transparent 44px),
-      var(--paper);
-    padding-top: 5.5rem; padding-bottom: 5.5rem;
-  }
-  @media (max-width: 640px){
-    .page{
-      background:
-        linear-gradient(90deg, transparent 0 34px, rgba(184,144,46,0.4) 34px, rgba(184,144,46,0.4) 35px, transparent 35px),
-        repeating-linear-gradient(180deg, transparent 0 34px, var(--paper-line) 34px, var(--paper-line) 35px, transparent 35px),
-        var(--paper);
-    }
-  }
-  .page-inner{ margin-left: 128px; max-width: 780px; }
-  @media (max-width: 640px){ .page-inner{ margin-left: 52px; padding-right:6px; } }
-
-  .block + .block{ margin-top: 4rem; padding-top: 3.4rem; border-top: 1px solid var(--paper-shadow); }
-
-  .page .eyebrow{ color: var(--gold-ink); }
-
-  .quote-big{
+  .made-for{
     font-family:'Fraunces', serif;
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
-    line-height: 1.32;
-    margin: 0 0 1.4rem;
-    color: var(--ink);
-  }
-  .lede{
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: #4a4038;
-    max-width: 62ch;
-  }
-
-  h2.section-title{
-    font-family:'Fraunces', serif;
-    font-weight: 600;
-    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
-    margin: 0 0 1.1rem;
-    color: var(--ink);
-  }
-
-  /* what / where / how */
-  .ledger-table{ margin-top: 2.2rem; border-top: 1px solid var(--paper-shadow); }
-  .ledger-row{
-    display:grid;
-    grid-template-columns: 118px 1fr;
-    gap: 1.6rem;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--paper-shadow);
-    align-items: baseline;
-  }
-  @media (max-width: 560px){
-    .ledger-row{ grid-template-columns: 84px 1fr; gap: 1rem; }
-  }
-  .ledger-row .term{
-    font-family:'Fraunces', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.3rem;
-    color: var(--gold-ink);
-  }
-  .ledger-row .desc{
-    font-size: 0.98rem;
-    line-height: 1.65;
-    color: #4a4038;
-  }
-
-  /* the WHY callout — deliberately given more visual weight */
-  .why-callout{
-    margin-top: 2.6rem;
-    padding: 1.8rem 0 0;
-    border-top: 2px solid var(--brass);
-  }
-  .why-callout .why-rupee{
-    display:block;
-    font-family:'Fraunces', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: var(--brass);
-    opacity: 0.85;
-    margin-bottom: 0.7rem;
-  }
-  .why-callout .quote-big{ font-size: clamp(1.35rem, 3vw, 1.9rem); }
-
-  /* inset philosophy panel — real wealth statement, given breathing room */
-  .panel{
-    margin-top: 2.4rem;
-    padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1.6rem, 5vw, 3.4rem);
-    border-radius: 6px;
-    background: linear-gradient(155deg, var(--maroon), var(--maroon-deep));
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
     color: var(--cream);
-  }
-  .panel .rule{
-    width: 56px; height: 2px;
-    background: var(--brass-light);
-    opacity:.8;
-    margin: 0 0 1.8rem;
-  }
-  .panel .quote-big{ color: var(--cream); font-size: clamp(1.45rem, 3.4vw, 2.05rem); line-height: 1.4; }
-  .panel .lede{ color: rgba(244,234,208,0.85); margin-top: 1.2rem; }
-  .panel .attribution{
-    margin-top: 2rem;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(244,234,208,0.6);
-  }
-
-  .values-wrap{ margin-top: 2rem; display:flex; flex-wrap:wrap; gap: 0.7rem; }
-  .chip{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    padding: 0.5rem 1.05rem;
-    background: var(--cream);
-    border: none;
-    border-radius: 999px;
-    color: var(--maroon-deep);
-    font-weight: 600;
-  }
-
-  .rupee-mark{
-    display:block;
-    font-family:'Fraunces', serif;
-    font-style: italic;
-    font-size: 2rem;
-    color: var(--brass);
-    opacity: 0.85;
-    text-align:center;
-    margin: 2.4rem 0 0.4rem;
-  }
-  .purpose-wrap{
-    position: relative;
-    margin-top: 2rem;
-    max-width: 600px;
-    margin-left: auto; margin-right: auto;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--paper-shadow);
-    box-shadow: 0 4px 18px rgba(67,17,16,0.12);
-  }
-  .purpose-band{
-    height: 15px;
-    background: linear-gradient(90deg,
-      var(--saffron) 0%, var(--saffron) 33.33%,
-      #ffffff 33.33%, #ffffff 66.66%,
-      var(--india-green) 66.66%, var(--india-green) 100%);
-  }
-  .purpose-content{
-    padding: 2.2rem 1.8rem 1.6rem;
-    text-align:center;
-    background:
-      linear-gradient(90deg,
-        rgba(255,153,51,0.22) 0%, rgba(255,153,51,0.22) 30%,
-        rgba(255,255,255,0.65) 30%, rgba(255,255,255,0.65) 70%,
-        rgba(20,108,54,0.22) 70%, rgba(20,108,54,0.22) 100%),
-      var(--cream);
-  }
-  .purpose-line{
-    font-family:'Fraunces', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: clamp(1.05rem, 2.8vw, 1.28rem);
-    line-height: 1.4;
-    color: var(--maroon-deep);
-    margin: 0;
-  }
-  @media (min-width: 1000px){
-    .purpose-line{ white-space: nowrap; font-size: 1.08rem; }
-  }
-  .purpose-copyright{
-    margin: 1rem 0 0;
-    text-align: right;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.04em;
-    color: rgba(67,17,16,0.45);
-  }
-
-  /* ==================== PAGE 3 — CLOSING + FOOTER ==================== */
-  .closing{
-    background: linear-gradient(165deg, var(--maroon) 0%, var(--maroon-deep) 88%);
-    color: var(--cream);
-    padding-top: 5.5rem; padding-bottom: 3rem;
-  }
-  .closing .page-inner{ max-width: 620px; }
-  .closing .eyebrow{ color: var(--brass-light); }
-  .closing h2{
-    font-family:'Fraunces', serif; font-weight:600;
-    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
     margin: 0 0 0.6rem;
-    color: var(--cream);
   }
-  .closing p.sub{ margin: 0 0 2rem; color: rgba(244,234,208,0.8); font-size:1rem; }
-
-  form.signup{ display:flex; gap: 0.7rem; flex-wrap: wrap; }
-  .signup label.visually-hidden{
-    position:absolute; width:1px; height:1px; overflow:hidden;
-    clip:rect(0,0,0,0); white-space:nowrap;
-  }
-  .signup input[type=email]{
-    flex: 1 1 260px;
-    padding: 0.95rem 1.1rem;
-    font-family:'IBM Plex Sans', sans-serif;
-    font-size: 1rem;
-    background: #fbf6e9;
-    border: 1.5px solid transparent;
-    border-radius: 4px;
-    color: var(--ink);
-    outline: none;
-  }
-  .signup input[type=email]:focus{ border-color: var(--brass); box-shadow: 0 0 0 3px rgba(184,144,46,0.25); }
-  .signup button{
-    font-family:'IBM Plex Mono', monospace;
-    letter-spacing: 0.05em;
+  .coming-soon{
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    padding: 1rem 1.8rem;
-    background: var(--brass-light);
-    color: var(--maroon-deep);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background .2s ease, transform .15s ease;
-    font-weight:700;
-    position: relative;
-  }
-  .signup button::after{
-    content:"";
-    position:absolute; left:8px; right:8px; bottom:5px;
-    height:2px; border-radius:1px;
-    background: linear-gradient(90deg,
-      var(--maroon-deep) 0%, var(--maroon-deep) 33.33%,
-      var(--cream) 33.33%, var(--cream) 66.66%,
-      var(--india-green) 66.66%, var(--india-green) 100%);
-    opacity:0;
-    transition: opacity .2s ease;
-  }
-  .signup button:hover::after, .signup button:focus-visible::after{ opacity:0.55; }
-  .signup button:hover{ background: #e8c273; }
-  .signup button:active{ transform: scale(0.97); }
-
-  .confirm{
-    display:none;
-    margin-top: 1.2rem;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--brass-light);
-    align-items:center; gap: 0.6rem;
-  }
-  .confirm.show{ display:flex; }
-  .confirm .seal{
-    width: 22px; height:22px; border-radius:50%;
-    border: 1.5px solid var(--brass-light);
-    display:flex; align-items:center; justify-content:center;
-    font-size: 0.7rem;
-    flex-shrink: 0;
+    color: rgba(244,234,208,0.7);
+    margin: 0;
   }
 
   footer{
-    margin-top: 4rem;
-    padding: 1.8rem 6vw 2.2rem;
-    border-top: 1px solid rgba(244,234,208,0.18);
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    color: rgba(244,234,208,0.6);
-    display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;
+    position: relative;
+    z-index: 1;
+    padding: 0 6vw 4vh;
+    text-align:center;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    color: rgba(244,234,208,0.5);
+    display:flex; flex-direction:column; gap:0.5rem;
+    align-items:center;
   }
-  footer .brand{ color: var(--cream); }
-  footer nav{ display:flex; gap: 1.2rem; flex-wrap: wrap; }
-  footer nav a{ color: rgba(244,234,208,0.6); text-decoration: none; }
-  footer nav a:hover{ color: var(--cream); text-decoration: underline; }
+  footer a{
+    color: rgba(244,234,208,0.65);
+    text-decoration: none;
+  }
+  footer a:hover, footer a:focus-visible{ color: var(--cream); text-decoration: underline; }
+  footer a:focus-visible{ outline: 2px solid var(--brass); outline-offset: 2px; }
 </style>
 </head>
 <body>
 
-<div class="spine" aria-hidden="true"></div>
-
-<main>
-
-  <!-- PAGE 1: COVER -->
-  <section class="cover">
-    <span class="hero-rupee" aria-hidden="true">&#8377;</span>
-
+  <div class="page">
     <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 2 L2 30 M2 2 L30 2" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
     <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 2 L62 30 M62 2 L34 2" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
     <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M2 62 L2 34 M2 62 L30 62" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
     <div class="corner br" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M62 62 L62 34 M62 62 L34 62" stroke="#d8b451" stroke-width="2" fill="none" opacity="0.75"/></svg></div>
 
-    <div class="cover-content">
-      <p class="eyebrow">Personal Spending Intelligence</p>
+    <span class="bg-rupee" aria-hidden="true">&#8377;</span>
+
+    <div class="content">
+      <p class="eyebrow">MyLekka.in</p>
       <h1 class="wordmark">MyLekka</h1>
       <p class="tagline">Know Your Spend.</p>
-      <p class="subline">Most of us know how much we earn. Few truly understand where it goes.</p>
-
-      <div class="stamp" aria-hidden="true">
-        <svg class="stamp-ring" viewBox="0 0 64 64">
-          <circle cx="32" cy="32" r="27" fill="none" stroke="#ff9933" stroke-width="2.4"
-            stroke-dasharray="56.55 113.10" stroke-dashoffset="0"/>
-          <circle cx="32" cy="32" r="27" fill="none" stroke="#ffffff" stroke-width="2.4"
-            stroke-dasharray="56.55 113.10" stroke-dashoffset="-56.55"/>
-          <circle cx="32" cy="32" r="27" fill="none" stroke="#146c36" stroke-width="2.4"
-            stroke-dasharray="56.55 113.10" stroke-dashoffset="-113.10"/>
-          <circle class="inner-dash" cx="32" cy="32" r="22"/>
-        </svg>
-        <svg class="wheel" viewBox="0 0 64 64">
-          <circle class="rim" cx="32" cy="32" r="20"/>
-          <line x1="37.7" y1="32.0" x2="50.0" y2="32.0"/>
-          <line x1="37.3" y1="34.6" x2="48.7" y2="39.2"/>
-          <line x1="36.1" y1="36.9" x2="45.6" y2="45.6"/>
-          <line x1="34.6" y1="37.3" x2="39.2" y2="48.7"/>
-          <line x1="32.0" y1="37.7" x2="32.0" y2="50.0"/>
-          <line x1="29.4" y1="37.3" x2="24.8" y2="48.7"/>
-          <line x1="27.9" y1="36.1" x2="18.4" y2="45.6"/>
-          <line x1="26.7" y1="34.6" x2="15.3" y2="39.2"/>
-          <line x1="26.3" y1="32.0" x2="14.0" y2="32.0"/>
-          <line x1="26.7" y1="29.4" x2="15.3" y2="24.8"/>
-          <line x1="27.9" y1="27.9" x2="18.4" y2="18.4"/>
-          <line x1="29.4" y1="26.7" x2="24.8" y2="15.3"/>
-          <line x1="32.0" y1="26.3" x2="32.0" y2="14.0"/>
-          <line x1="34.6" y1="26.7" x2="39.2" y2="15.3"/>
-          <line x1="36.1" y1="27.9" x2="45.6" y2="18.4"/>
-          <line x1="37.3" y1="29.4" x2="48.7" y2="24.8"/>
-          <circle class="hub" cx="32" cy="32" r="5.5"/>
-        </svg>
-        <div class="stamp-text">Made for<br>India</div>
-      </div>
-
-      <div class="scroll-cue" aria-hidden="true">
-        <span class="arrow">&#8595;</span>
-      </div>
+      <div class="tricolor-line" aria-hidden="true"></div>
+      <p class="made-for">Made for India.</p>
+      <p class="coming-soon">Coming Soon.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- PAGE 2: CONTENT -->
-  <section class="page">
-    <div class="page-inner">
-
-      <div class="block reveal">
-        <p class="eyebrow">The question</p>
-        <h2 class="quote-big">&ldquo;Does my spending reflect what truly matters to me?&rdquo;</h2>
-        <p class="lede">Most of us know how much we earn, but few truly understand where our money goes, why we spend it, and whether it reflects what matters to us. MyLekka is built around this one question.</p>
-      </div>
-
-      <div class="block reveal">
-        <p class="eyebrow">Beyond tracking</p>
-        <h2 class="section-title">It&rsquo;s not just what you spend</h2>
-        <p class="lede">Most apps stop at what you spent and where it went. MyLekka goes further and asks why &mdash; because that&rsquo;s what actually helps you understand your own spending.</p>
-
-        <div class="ledger-table">
-          <div class="ledger-row">
-            <div class="term">What</div>
-            <div class="desc">What you actually spend on, laid out plainly.</div>
-          </div>
-          <div class="ledger-row">
-            <div class="term">Where</div>
-            <div class="desc">Where that money goes &mdash; the places, people and patterns behind it.</div>
-          </div>
-          <div class="ledger-row">
-            <div class="term">How</div>
-            <div class="desc">How it adds up, and how it shapes your life over time.</div>
-          </div>
-        </div>
-
-        <div class="why-callout">
-          <span class="why-rupee" aria-hidden="true">&#8377;</span>
-          <p class="quote-big">Why is the part that matters most &mdash; the reason behind each entry, and the pattern that becomes visible once you see it.</p>
-          <p class="lede">See the why often enough, and understanding your own spending stops being work. You simply start learning from it.</p>
-        </div>
-      </div>
-
-      <div class="block reveal">
-        <p class="eyebrow">What matters</p>
-        <div class="panel">
-          <div class="rule" aria-hidden="true"></div>
-          <h2 class="quote-big">The goal isn&rsquo;t simply to spend less or save more. It&rsquo;s to align your spending with what matters &mdash; family, health, education, experiences and your future.</h2>
-          <p class="lede">Because real wealth isn&rsquo;t just how much money we have. It&rsquo;s how well we use it for the people and life that matter to us.</p>
-          <div class="values-wrap" aria-label="What matters">
-            <span class="chip">Family</span>
-            <span class="chip">Health</span>
-            <span class="chip">Education</span>
-            <span class="chip">Experiences</span>
-            <span class="chip">Future</span>
-          </div>
-          <p class="attribution">&mdash; the MyLekka philosophy</p>
-        </div>
-      </div>
-
-      <div class="block reveal">
-        <p class="lede">When enough people start asking the same question, small individual choices add up to something larger.</p>
-        <p class="lede" style="margin-top:1.1rem;">As India grows, earns and spends more, we want that growth to show up as better choices and better lives &mdash; not just bigger numbers.</p>
-        <span class="rupee-mark" aria-hidden="true">&#8377;</span>
-        <div class="purpose-wrap">
-          <div class="purpose-band" aria-hidden="true"></div>
-          <div class="purpose-content">
-            <p class="purpose-line">Made for India. Made to make a difference in India.</p>
-            <p class="purpose-copyright">&copy; 2026 MyLekka. All rights reserved.</p>
-          </div>
-          <div class="purpose-band" aria-hidden="true"></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PAGE 3: CLOSING + FOOTER -->
-  <section class="closing">
-    <div class="page-inner reveal">
-      <p class="eyebrow">Coming soon</p>
-      <h2>MyLekka opens soon.</h2>
-      <p class="sub">Leave your email and we&rsquo;ll let you know when it&rsquo;s ready.</p>
-
-      <form class="signup" id="signupForm">
-        <label for="email" class="visually-hidden">Email address</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button type="submit">Notify me</button>
-      </form>
-      <div class="confirm" id="confirmMsg" role="status">
-        <span class="seal" aria-hidden="true">&#10003;</span>
-        <span>Thanks &mdash; we&rsquo;ll let you know when MyLekka is ready.</span>
-      </div>
-    </div>
-
-    <footer>
-      <span class="brand">MyLekka.in &mdash; Know Your Spend.</span>
-      <nav aria-label="Footer">
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
-        <a href="mailto:hello@mylekka.in">Contact</a>
-      </nav>
-      <span>&copy; 2026 MyLekka</span>
-    </footer>
-  </section>
-
-</main>
-
-<script>
-  // scroll reveal
-  var els = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    els.forEach(function(el){ io.observe(el); });
-  } else {
-    els.forEach(function(el){ el.classList.add('is-in'); });
-  }
-
-  // signup form (front-end only placeholder — no backend wired up)
-  var form = document.getElementById('signupForm');
-  var confirmMsg = document.getElementById('confirmMsg');
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    confirmMsg.classList.add('show');
-    form.querySelector('button').textContent = 'Recorded';
-    form.querySelector('input').setAttribute('disabled', 'true');
-  });
-</script>
+  <footer>
+    <span>&copy; 2026 MyLekka. All rights reserved.</span>
+    <a href="mailto:hello@mylekka.in">Contact</a>
+  </footer>
 
 </body>
 </html>
